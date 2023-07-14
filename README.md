@@ -23,3 +23,7 @@ I would like to achive a feeling link in hunt showdown or metro exodus, but i kn
 
 # Tools
 Developing will be done in unity. 
+Concepts and Inspiration will be done with ["figma"](https://www.figma.com/file/RAObIrPi6llWKlwQeb4ZYc/CruelHarvest?type=design&node-id=0-1&mode=design&t=OiS0Pa7XcZKzv0nY-0)
+
+
+
