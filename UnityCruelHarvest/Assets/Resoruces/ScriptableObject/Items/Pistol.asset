@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfae6aef65baf4f509b664ed4402b8c0, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  name: 
+  name: Pistol
   id: 0
-  description: 
+  description: Pistol
   icon: {fileID: 0}
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 8056960416358627669, guid: 54ea5514ee78f4d6c83b0e8101578420, type: 3}
+  magazineSize: 5
+  magazineCount: 2
+  currentAmmo: 0
+  range: 0
+  weaptonType: 0
