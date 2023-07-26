@@ -10,12 +10,15 @@ Aside to the horrorish/action gameplay you will focus mainly on farming. You nee
 Farming:
  - Corn
  - Animals (Da gooooose)
- - Tidy up (Weather dmg)
+ - Tidy up (Weather dmg / War dmg)
 
 Action:
  - Traps (Bells/Cans)
  - Different Lights
  - Enemy
+
+# Inventory
+You should only be able to carry 2 or 3 tools. Tools include weapons. This means you have to choose carefully what items you are equiping. Also for usable items like something to heal or seeds there should be a carry limitation. Here i think of 5-10 items 
 
 
 # Graphic Style
