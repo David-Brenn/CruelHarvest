@@ -8,7 +8,15 @@ public class Item : ScriptableObject
     public int id;
     public string description;
     public Sprite icon;
+    public ItemType type;
 
+    
+    public enum ItemType {
+        Tool,
+        Consumable
+
+
+    }
     // Update is called once per frame
     public virtual void Use()
     {

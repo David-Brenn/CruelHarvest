@@ -19,7 +19,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!InventorySystem.inventorySystem.inventoryEnabled){
+        if(!InventorySystem.instance.inventoryEnabled){
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible=false;
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityX * Time. deltaTime;

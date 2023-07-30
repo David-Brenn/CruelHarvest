@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
 {
-    public static InventorySystem inventorySystem;
-    public List<Item> inventory;
+    
+    public List<Item> itemInventory;
+    public int itemInventorySize = 20;
+    public List<Item> toolInventory;
+    public int toolInventorySize = 3;
     public bool inventoryEnabled = false;
     public GameObject inventoryUI;
 
-    // Start is called before the first frame update
-    void Start()
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
+    
+
+    #region Singleton
+
+    public static InventorySystem instance;
+
+    void Awake()
     {
-        if(inventorySystem == null){
-            inventorySystem = this;
+        if(instance != null){
+            instance = this;
         } else {
-            Destroy(this);
+            Debug.LogWarning("There is already a InventorySystem in the scene");
+            return;
         }
     }
+
+    #endregion
 
     // Update is called once per frame
     void Update()
@@ -33,19 +46,56 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    public void addItem(Item item){
-        inventory.Add(item);
-    }
+    /// <summary>
+    /// Adds item to inventory if there is space.
+    /// Items of the type Tool will be added to the toolInventory
+    /// Items of the type Consumable will be added to the itemInventory
+    /// </summary>
+    /// <param name="item"> Item that is added</param>
+    /// <returns>True if adding the item was succesful</returns>
+    public bool addItem(Item item){
+        if(item.type == Item.ItemType.Tool) {
+            if(toolInventory.Count < toolInventorySize) {
 
-    public void removeItem(Item item){
-        inventory.Remove(item);
-    }
-
-    public void useItem(Item item){
-        if(inventory.Contains(item))  {
-            item.Use();
+                
+                toolInventory.Add(item);
+                if (onItemChangedCallback != null) {
+                    onItemChangedCallback.Invoke();
+                }
+                return true;
+            } else {
+                return false;
+            }
+            
+            
+        } else {
+            if(itemInventory.Count < itemInventorySize) {
+                itemInventory.Add(item);
+                if (onItemChangedCallback != null) {
+                    onItemChangedCallback.Invoke();
+                }
+                return true;
+            } else {
+                return false;
+            }
+            
         }
     }
+    /// <summary>
+    /// Removes item from inventory
+    /// </summary>
+    /// <param name="item">Ithem that should be removed</param>
+    public void removeItem(Item item){
+        if(item.type == Item.ItemType.Tool) {
+            toolInventory.Remove(item);
+        } else {
+            itemInventory.Remove(item);
+        }
+        if (onItemChangedCallback != null) {
+            onItemChangedCallback.Invoke();
+        }
+    }
+
     /// <summary>
     /// Spawns the prefab of a item if the player want to drop a item
     /// </summary>
