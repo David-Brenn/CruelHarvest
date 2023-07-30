@@ -6,11 +6,13 @@ public class InventorySystem : MonoBehaviour
 {
     public static InventorySystem inventorySystem;
     public List<Item> inventory;
+    public bool inventoryEnabled = false;
+    public GameObject inventoryUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(inventorySystem != null){
+        if(inventorySystem == null){
             inventorySystem = this;
         } else {
             Destroy(this);
@@ -20,7 +22,15 @@ public class InventorySystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.I)){
+            inventoryEnabled = !inventoryEnabled;
+        }
+
+        if(inventoryEnabled){
+            inventoryUI.SetActive(true);
+        } else {
+            inventoryUI.SetActive(false);
+        }
     }
 
     public void addItem(Item item){

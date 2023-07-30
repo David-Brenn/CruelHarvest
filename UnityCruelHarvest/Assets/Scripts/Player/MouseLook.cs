@@ -19,16 +19,24 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityX * Time. deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivityY * Time.deltaTime;
+        if(!InventorySystem.inventorySystem.inventoryEnabled){
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible=false;
+            float mouseX = Input.GetAxis("Mouse X") * mouseSensitivityX * Time. deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivityY * Time.deltaTime;
 
-        xRotation -= mouseY;
-        yRotation += mouseX;
+            xRotation -= mouseY;
+            yRotation += mouseX;
 
-        xRotation = Mathf. Clamp (xRotation, -90f, 90f);
+            xRotation = Mathf. Clamp (xRotation, -90f, 90f);
 
-        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
-        orientation.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+            transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
+            orientation.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+        } else {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible=true;
+        }
+        
         
     }
 }
