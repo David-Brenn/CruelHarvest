@@ -23,11 +23,12 @@ public class InventorySystem : MonoBehaviour
     void Awake()
     {
         if(instance != null){
-            instance = this;
-        } else {
             Debug.LogWarning("There is already a InventorySystem in the scene");
             return;
-        }
+        } 
+            instance = this;
+            
+        
     }
 
     #endregion
