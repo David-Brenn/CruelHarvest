@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: 160429686}
   - component: {fileID: 160429687}
   - component: {fileID: 160429688}
+  - component: {fileID: 160429689}
   m_Layer: 0
   m_Name: FPPlayer
   m_TagString: Untagged
@@ -464,10 +465,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemInventory: []
   itemInventorySize: 20
-  toolInventory: []
+  toolInventory:
+  - {fileID: 11400000, guid: 2655d900d9c954d07a2b9cf3cb16cf9d, type: 2}
   toolInventorySize: 3
   inventoryEnabled: 0
   inventoryUI: {fileID: 936168386}
+  dropForce: 5
+--- !u!114 &160429689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160429682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b8315eae45e6c42922f03e2218a70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focus: {fileID: 0}
 --- !u!1 &197974214
 GameObject:
   m_ObjectHideFlags: 0
@@ -4725,7 +4741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -4915,6 +4931,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2022513556}
     m_Modifications:
+    - target: {fileID: 3861507214302309917, guid: 7d71ee74911be5f428ebf38bfb3d435a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5201016288649894063, guid: 7d71ee74911be5f428ebf38bfb3d435a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4999,6 +5019,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToolSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 8837985528772301189, guid: 7d71ee74911be5f428ebf38bfb3d435a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5012,10 +5036,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1831312273411002969, guid: 54ea5514ee78f4d6c83b0e8101578420, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 1831312273411002969, guid: 54ea5514ee78f4d6c83b0e8101578420, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.928627

@@ -15,8 +15,9 @@ MonoBehaviour:
   name: Pistol
   id: 0
   description: Pistol
-  icon: {fileID: 0}
-  weaponPrefab: {fileID: 8056960416358627669, guid: 54ea5514ee78f4d6c83b0e8101578420, type: 3}
+  icon: {fileID: 21300000, guid: 77dcf4c4a92f0a7409ec6a438ca8e6fe, type: 3}
+  type: 0
+  prefab: {fileID: 8056960416358627669, guid: 54ea5514ee78f4d6c83b0e8101578420, type: 3}
   magazineSize: 5
   magazineCount: 2
   currentAmmo: 0

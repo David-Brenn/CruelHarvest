@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class InventorySystem : MonoBehaviour
@@ -14,6 +15,8 @@ public class InventorySystem : MonoBehaviour
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
+
+    public float dropForce;
     
 
     #region Singleton
@@ -31,6 +34,11 @@ public class InventorySystem : MonoBehaviour
         
     }
 
+    private void Start() {
+        
+        
+    }
+
     #endregion
 
     // Update is called once per frame
@@ -38,12 +46,22 @@ public class InventorySystem : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.I)){
             inventoryEnabled = !inventoryEnabled;
+            if (onItemChangedCallback != null) {
+                onItemChangedCallback.Invoke();
+            }
         }
 
         if(inventoryEnabled){
             inventoryUI.SetActive(true);
+
         } else {
             inventoryUI.SetActive(false);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Q)){
+            //Drop first Tool Item
+            if(toolInventory.Count > 0)
+            dropItem(toolInventory[0]);
         }
     }
 
@@ -102,7 +120,14 @@ public class InventorySystem : MonoBehaviour
     /// </summary>
     /// <param name="item"></param>
     public void dropItem(Item item){
+        
+        //instanciate the item prefab
+        Debug.Log("Drop:" + item.name);
+        GameObject droppedTool = Instantiate(item.prefab,gameObject.transform.position,gameObject.transform.rotation);
+        droppedTool.GetComponent<Rigidbody>().AddForce(new Vector3 (0,2,1)* dropForce ,ForceMode.Impulse);
+        
 
+        removeItem(item);
         //Check if item is droppable (is a weapon)
         //If so spawn the prefab a the position of the player
         

@@ -9,6 +9,7 @@ public class Item : ScriptableObject
     public string description;
     public Sprite icon;
     public ItemType type;
+    public GameObject prefab;
 
     
     public enum ItemType {
