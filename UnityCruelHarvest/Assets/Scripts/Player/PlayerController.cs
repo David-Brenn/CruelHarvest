@@ -40,21 +40,25 @@ public class PlayerController : MonoBehaviour
               }
         }
     }
-    /// <summary>
-    /// Focus
-    /// </summary>
-    
 
 
     //Sets the focus to the new interactable object and tells the object that it is focused
     void SetFocus(Interactable newFocus) {
-        //todo remove focus from old object
-        focus = newFocus;
-        //todo tell the object that it is focused
+        if(newFocus != focus){
+            if(focus != null) {
+                focus.OnDefocus();
+            }
+            focus = newFocus;
+        }
+        newFocus.OnFocused(transform);
     }
 
     void RemoveFocus() {
-        //tell objecet that it is no longer focused
+        if(focus != null){
+            //tell objecet that it is no longer focused
+            focus.OnDefocus();     
+        }
         focus = null;
+        
     }
 }
