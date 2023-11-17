@@ -13,6 +13,8 @@ public class Weapon : Item
     public float range;
     public WeaponType weaptonType;
 
+    public GameObject handPrefab;
+
     public enum WeaponType{
         Pistol,
         Rifle,

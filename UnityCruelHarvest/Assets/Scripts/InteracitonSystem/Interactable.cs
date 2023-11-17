@@ -4,7 +4,8 @@ using UnityEngine;
 ///Could also use Colliders and use the is triggered function
 /// 
 /// <summary>
-/// This class 
+/// This class is used to interact with objects in the world. Apply this script to a object that you want to be interactable. 
+/// When a item is in focus meaing the player is watching it, the player can interact with it by pressing the interact button.
 /// </summary>
 
 public class Interactable : MonoBehaviour
@@ -15,6 +16,10 @@ public class Interactable : MonoBehaviour
     private bool hasInteracted = false;
     Transform player;
 
+
+    /// <summary>
+    /// This function is called when the player interacts with the object. It is a virtual function so it can be overriden in the child class to define what happens when the player interacts with the object.
+    /// </summary> 
     public virtual void Interact() {
         Debug.Log("Interacting with " + transform.name);
     }
@@ -25,6 +30,7 @@ public class Interactable : MonoBehaviour
 
     private void Update() {
         
+        //If the player is focusing on the object. The object calculates the distance between the player and itself. If the distance is smaller than the radius, the player can interact with it.
         if (isFocus) {
             float distance = Vector3.Distance(player.position, transform.position);
             if (distance <= radius) {
