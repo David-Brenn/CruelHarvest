@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     //Safes the current object the player is looking at if it is interactable
     public Interactable focus;
     private InventorySystem inventorySystem;
+
+
+    public Playerhand playerhand;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
 
         CheckCenterForInteractable();
+        NumberInput();
 
         
     }
@@ -93,15 +97,19 @@ public class PlayerController : MonoBehaviour
             //Get Item from inventory
             if(inventorySystem.toolInventory.Count > i) {
                 Item item = inventorySystem.toolInventory[i];
-                //Load the item into the player's hand
-                if(item != null) {
-                    Debug.Log("Equipping " + item.name);
-                    
-                } else {
-                    Debug.Log("No item in slot " + i);
-                }
-            }
+                if (item is Weapon weapon)
+                {
+                    //Load the item into the player's hand
+                    if (item != null)
+                    {
 
+                        playerhand.SetTool(weapon.handPrefab);
+
+                    }
+                }
+            } else {
+                playerhand.RemoveTool();
+            }
         } else {
             Debug.LogError("Tool index out of bounds");
 

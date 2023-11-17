@@ -23,3 +23,4 @@ MonoBehaviour:
   currentAmmo: 0
   range: 0
   weaptonType: 0
+  handPrefab: {fileID: 6820161163352822978, guid: 50ca661b63ae6473d83c6acd3a6de42d, type: 3}
